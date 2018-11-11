@@ -1,0 +1,4 @@
+#files/directories/patterns intentionally ignored by git
+
+.idea
+build/
