@@ -1,4 +1,4 @@
-Game.Nurikabe game project by Grupa Wędkarska:
+Nurikabe game project by Grupa Wędkarska:
 Karolina Piekarz
 Karol Bieleń
 Jan Malina
