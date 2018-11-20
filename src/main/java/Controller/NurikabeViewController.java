@@ -2,14 +2,14 @@ package Controller;
 
 import Command.CommandRegistry;
 import Model.Board;
-import Model.Timer;
+import Model.Score;
 import javafx.scene.control.Button;
 
 public class NurikabeViewController {
     private NurikabeController controller;
     private CommandRegistry commandRegistry;
     private Board board;
-    private Timer timer;
+    private Score score;
 
     private Button undoButton;
     private Button redoButton;
