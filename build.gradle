@@ -1,3 +1,12 @@
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
 plugins {
     id 'java'
 }
@@ -7,10 +16,36 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+
+apply plugin: 'java'
+
 repositories {
+    mavenLocal()
     mavenCentral()
 }
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '5.3.1'
 }
+
+apply plugin: 'javafx-gradle-plugin'
+
+jfx {
+    // minimal requirement for jfxJar-task
+    mainClass = 'Game.Nurikabe'
+
+    // minimal requirement for jfxNative-task
+    vendor = 'Grupa Wedkarska'
+
+    // some optional task
+    jfxAppOutputDir = 'build'
+    jfxMainAppJarName = 'YOUR APPLICATION NAME.jar'
+    manifestAttributes = [
+            "Specification-Version": 1.0,
+            "Implementation-Version": 1,
+            "Built-By": "Grupa Wedkarska",
+            ]
+}
+
+
