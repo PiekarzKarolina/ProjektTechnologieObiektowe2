@@ -40,7 +40,7 @@ jfx {
 
     // some optional task
     jfxAppOutputDir = 'build'
-    jfxMainAppJarName = 'YOUR APPLICATION NAME.jar'
+    jfxMainAppJarName = 'Nurikabe.jar'
     manifestAttributes = [
             "Specification-Version": 1.0,
             "Implementation-Version": 1,
