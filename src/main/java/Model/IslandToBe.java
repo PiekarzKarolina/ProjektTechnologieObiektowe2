@@ -1,6 +1,6 @@
 package Model;
 
-public class IslandToBe implements Cell {    //cell that is about ot be an island
+public class IslandToBe extends Cell {    //cell that is about ot be an island
     int size;
     //TODO
 }

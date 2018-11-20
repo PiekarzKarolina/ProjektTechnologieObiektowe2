@@ -1,6 +1,6 @@
 package Model;
 
-public class SimpleCell implements Cell {
+public class SimpleCell extends Cell {
     private Color color;
 
     public boolean isBlack (){
