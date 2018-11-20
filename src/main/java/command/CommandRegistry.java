@@ -1,4 +1,4 @@
-package Command;
+package command;
 
 import java.util.List;
 
@@ -17,6 +17,7 @@ public class CommandRegistry {
     public void undo() {
 
     }
+
     public List<Command> getStack() {
         return stack;
     }

@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 public class Timer {
 
-    public void start(){
+    public void start() {
         //TODO
     }
 

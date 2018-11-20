@@ -33,7 +33,7 @@ apply plugin: 'javafx-gradle-plugin'
 
 jfx {
     // minimal requirement for jfxJar-task
-    mainClass = 'Game.Nurikabe'
+    mainClass = 'game.Nurikabe'
 
     // minimal requirement for jfxNative-task
     vendor = 'Grupa Wedkarska'

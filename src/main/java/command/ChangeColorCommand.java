@@ -1,7 +1,8 @@
-package Command;
+package command;
 
 public class ChangeColorCommand implements Command {
     private CommandRegistry commandRegistry;
+
     @Override
     public void executeCommand() {
 //TODO

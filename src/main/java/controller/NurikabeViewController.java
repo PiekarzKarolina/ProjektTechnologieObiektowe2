@@ -1,8 +1,8 @@
-package Controller;
+package controller;
 
-import Command.CommandRegistry;
-import Model.Board;
-import Model.Timer;
+import command.CommandRegistry;
+import model.Board;
+import model.Timer;
 import javafx.scene.control.Button;
 
 public class NurikabeViewController {
@@ -19,25 +19,31 @@ public class NurikabeViewController {
     private Button rankButton;
 
 
-    public void initialize(){
+    public void initialize() {
         //TODO
     }
-    public void handleUndoAction(){
+
+    public void handleUndoAction() {
         //TODO
     }
-    public void handleRedoAction(){
+
+    public void handleRedoAction() {
         //TODO
     }
-    public void handleCheckAction(){
+
+    public void handleCheckAction() {
         //TODO
     }
-    public void handleResetAction(){
+
+    public void handleResetAction() {
         //TODO
     }
-    public void handleColor1(){
+
+    public void handleColor1() {
         //TODO
     }
-    public void handleColor2(){
+
+    public void handleColor2() {
         //TODO
     }
 }
