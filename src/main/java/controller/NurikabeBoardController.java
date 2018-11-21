@@ -1,6 +1,6 @@
 package controller;
 
-import Model.Score;
+import model.Score;
 import command.CommandRegistry;
 import javafx.scene.control.Button;
 import model.Board;
