@@ -1,20 +1,17 @@
 package controller;
 
+import Model.Score;
 import command.CommandRegistry;
-import model.Board;
-import model.Timer;
 import javafx.scene.control.Button;
+import model.Board;
 
-public class NurikabeViewController {
+public class NurikabeBoardController {
     private NurikabeController controller;
     private CommandRegistry commandRegistry;
     private Board board;
-    private Timer timer;
+    private Score score;
 
-    private Button undoButton;
-    private Button redoButton;
     private Button checkButton;
-    private Button resetButton;
     private Button newGameButton;
     private Button rankButton;
 
@@ -23,19 +20,7 @@ public class NurikabeViewController {
         //TODO
     }
 
-    public void handleUndoAction() {
-        //TODO
-    }
-
-    public void handleRedoAction() {
-        //TODO
-    }
-
     public void handleCheckAction() {
-        //TODO
-    }
-
-    public void handleResetAction() {
         //TODO
     }
 
@@ -44,6 +29,14 @@ public class NurikabeViewController {
     }
 
     public void handleColor2() {
+        //TODO
+    }
+
+    public void handleNewGameAction() {
+        //TODO
+    }
+
+    public void handleRankAction() {
         //TODO
     }
 }
