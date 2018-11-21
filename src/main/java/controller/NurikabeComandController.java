@@ -1,6 +1,6 @@
-package Controller;
+package controller;
 
-import Command.CommandRegistry;
+import command.CommandRegistry;
 import javafx.scene.control.Button;
 
 public class NurikabeComandController {
@@ -11,10 +11,11 @@ public class NurikabeComandController {
     private Button redoButton;
 
 
-    public void handleUndoAction(){
+    public void handleUndoAction() {
         //TODO
     }
-    public void handleRedoAction(){
+
+    public void handleRedoAction() {
         //TODO
     }
 }

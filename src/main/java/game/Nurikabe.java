@@ -1,10 +1,11 @@
-package Game;
+package game;
 
-import Controller.NurikabeController;
+import controller.NurikabeController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Nurikabe {
+
+public class Nurikabe extends Application {
     private Stage primaryStage;
     private NurikabeController controller;
 
@@ -18,8 +19,9 @@ public class Nurikabe {
         this.controller.initLayout();
 
     }
-    public static void main(String [] args){
-        System.out.println("Game.Nurikabe");
+
+    public static void main(String[] args) {
+        System.out.println("game.Nurikabe");
         launch(args);
     }
 

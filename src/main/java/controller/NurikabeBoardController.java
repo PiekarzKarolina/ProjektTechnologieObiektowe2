@@ -1,9 +1,9 @@
-package Controller;
+package controller;
 
-import Command.CommandRegistry;
-import Model.Board;
 import Model.Score;
+import command.CommandRegistry;
 import javafx.scene.control.Button;
+import model.Board;
 
 public class NurikabeBoardController {
     private NurikabeController controller;
@@ -16,22 +16,27 @@ public class NurikabeBoardController {
     private Button rankButton;
 
 
-    public void initialize(){
+    public void initialize() {
         //TODO
     }
-    public void handleCheckAction(){
+
+    public void handleCheckAction() {
         //TODO
     }
-    public void handleColor1(){
+
+    public void handleColor1() {
         //TODO
     }
-    public void handleColor2(){
+
+    public void handleColor2() {
         //TODO
     }
-    public void handleNewGameAction(){
+
+    public void handleNewGameAction() {
         //TODO
     }
-    public void handleRankAction(){
+
+    public void handleRankAction() {
         //TODO
     }
 }
