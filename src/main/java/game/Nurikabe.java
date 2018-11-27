@@ -2,56 +2,30 @@ package game;
 
 import controller.NurikabeController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.embed.swing.JFXPanel;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 
 public class Nurikabe extends Application {
+    private static final double BUTTON_PADDING = 5;
+    private static final int NUM_BUTTON_LINES = 5;
+    private static final int BUTTONS_PER_LINE = 7;
     private Stage primaryStage;
     private NurikabeController controller;
 
     @Override
     public void start(Stage primaryStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Nurikabe.class.getResource("/GeneralView.fxml"));
-            Parent root = loader.load();
 
-//            TabPane rootLayout = (TabPane) loader.load();
-//            Scene scene = new Scene(rootLayout);
-//
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Nurikabe");
 
-            primaryStage.setScene(new Scene(root, 300, 275));
-            primaryStage.show();
-
-
-            NurikabeController controller = loader.getController();
-            controller.initialize();
-
-        } catch (IOException e) {
-            // don't do this in common apps
-            e.printStackTrace();
-        }
-
-//
-//        this.primaryStage = primaryStage;
-//        this.primaryStage.setTitle("Nurikabe");
-//
-//        this.controller = new NurikabeController(primaryStage);
-//        this.controller.initLayout();
-
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
+        this.controller = new NurikabeController(primaryStage);
+        this.controller.initLayout();
 
     }
 

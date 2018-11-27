@@ -15,7 +15,6 @@ public class NurikabeBoardController {
     private Button newGameButton;
     private Button rankButton;
 
-
     public void initialize() {
         //TODO
     }
