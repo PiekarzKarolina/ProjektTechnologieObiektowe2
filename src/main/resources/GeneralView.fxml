@@ -12,7 +12,7 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: grey;">
                     <children>
-                        <GridPane fx:id="buttonGrid" alignment="center" hgap="10" onMouseClicked="#handleButtonGrid" prefHeight="571.0" prefWidth="533.0" vgap="10">
+                        <GridPane fx:id="buttonGrid" alignment="center" hgap="10" prefHeight="571.0" prefWidth="533.0" vgap="10">
                         </GridPane>
                         <Button layoutX="587.0" layoutY="509.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Sprawdź rozwiązanie" />
                         <Pane layoutX="500.0" layoutY="116.0" prefHeight="311.0" prefWidth="300.0">

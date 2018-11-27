@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import model.Board;
@@ -56,10 +55,25 @@ public class NurikabeBoardController {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        BoardButton clickedButton = (BoardButton) event.getSource();
+                       /* BoardButton clickedButton = (BoardButton) event.getSource();
                         int row =  clickedButton.getPositionRow();
                         int column = clickedButton.getPositionColumn();
-                        //TODO: co dalej??
+                        */
+                        switch (actualColor){
+                            case White:
+                                button.setStyle("-fx-background-color: white");
+                            case Black:
+                                button.setStyle("-fx-background-color: black");
+                            case Blue:
+                                button.setStyle("-fx-background-color: blue ");
+                            case Green:
+                                button.setStyle("-fx-background-color: green");
+                            case Pink:
+                                button.setStyle("-fx-background-color: pink ");
+                            case Null:
+                                break;
+                        }
+
                     }
                 });
                 buttonGrid.add(button, c, r);
@@ -114,7 +128,6 @@ public class NurikabeBoardController {
 
     @FXML
     public void handleColorBlue(ActionEvent event) {
-        System.out.println("blue");
         if (colorBlue.isSelected()) {
 
             switch (actualColor) {
@@ -137,7 +150,6 @@ public class NurikabeBoardController {
 
     @FXML
     public void handleColorGreen(ActionEvent event) {
-        System.out.println("green");
         if (colorGreen.isSelected()) {
 
             switch (actualColor) {
@@ -160,7 +172,6 @@ public class NurikabeBoardController {
 
     @FXML
     public void handleColorPink(ActionEvent event) {
-        System.out.println("pink");
         if (colorPink.isSelected()) {
 
             switch (actualColor) {
