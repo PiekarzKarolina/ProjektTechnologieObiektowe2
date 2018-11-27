@@ -2,6 +2,7 @@ package controller;
 
 import command.CommandRegistry;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -51,8 +52,16 @@ public class NurikabeBoardController {
         for (int r = 0; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
                 int number = NUM_BUTTON_LINES * r + c;
-                Button button = new Button(String.valueOf(number));
-                button.setText("   ");
+                BoardButton button = new BoardButton("   ",r,c);
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        BoardButton clickedButton = (BoardButton) event.getSource();
+                        int row =  clickedButton.getPositionRow();
+                        int column = clickedButton.getPositionColumn();
+                        //TODO: co dalej??
+                    }
+                });
                 buttonGrid.add(button, c, r);
             }
         }
