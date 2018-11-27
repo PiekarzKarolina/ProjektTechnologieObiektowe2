@@ -1,85 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0"
-         prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8"
-         xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NurikabeBoardController">
-    <Tab text="Gra">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
-                    style="-fx-background-color: grey;">
-            <GridPane fx:id="buttonGrid" alignment="center" hgap="10" vgap="10">
-            </GridPane>
-            <Button layoutX="587.0" layoutY="509.0" mnemonicParsing="false"
-                    style="-fx-background-color: white;" text="Sprawdź rozwiązanie"/>
-            <Pane layoutX="500.0" layoutY="116.0" prefHeight="311.0" prefWidth="300.0">
-                <CheckBox layoutX="52.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
-                          scaleY="1.5" textFill="#dd2a2a" textOverrun="CLIP">
-                    <effect>
-                        <ColorAdjust hue="-1.0" saturation="1.0"/>
-                    </effect>
-                </CheckBox>
-                <Text fill="WHITE" layoutX="70.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      text="Kolory pomocnicze">
-                    <font>
-                        <Font size="19.0"/>
-                    </font>
-                </Text>
-                <Text fill="WHITE" layoutX="90.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      text="Kolory główne">
-                    <font>
-                        <Font size="19.0"/>
-                    </font>
-                </Text>
-                <CheckBox layoutX="54.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0"
-                          prefWidth="70.0" scaleX="1.5" scaleY="1.5" text="Wyspa">
-                    <effect>
-                        <ColorAdjust brightness="1.0" contrast="1.0" saturation="1.0"/>
-                    </effect>
-                </CheckBox>
-                <CheckBox layoutX="196.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0"
-                          prefWidth="70.0" scaleX="1.5" scaleY="1.5" text="Fosa">
-                    <effect>
-                        <ColorAdjust brightness="-1.0"/>
-                    </effect>
-                </CheckBox>
-                <CheckBox layoutX="78.0" layoutY="172.0" mnemonicParsing="false">
-                    <effect>
-                        <PerspectiveTransform/>
-                    </effect>
-                </CheckBox>
-                <CheckBox layoutX="220.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
-                          scaleY="1.5">
-                    <effect>
-                        <ColorAdjust contrast="0.03" hue="-0.37" saturation="0.65"/>
-                    </effect>
-                </CheckBox>
-                <CheckBox layoutX="140.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
-                          scaleY="1.5">
-                    <effect>
-                        <ColorAdjust hue="0.51" saturation="0.72"/>
-                    </effect>
-                </CheckBox>
-            </Pane>
-            <Button layoutX="544.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0"
-                    prefWidth="67.0" style="-fx-background-color: red;" text="Cofnij"/>
-            <Button layoutX="687.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0"
-                    prefWidth="73.0" style="-fx-background-color: green;" text="Ponów"/>
-            <Text fill="WHITE" layoutX="599.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Twój czas:">
-                <font>
-                    <Font size="23.0"/>
-                </font>
-            </Text>
-            <TextField layoutX="559.0" layoutY="50.0" prefHeight="66.0" prefWidth="182.0"/>
-        </AnchorPane>
-    </Tab>
-    <Tab text="Ranking">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-            <TextArea layoutX="43.0" layoutY="30.0" prefHeight="345.0" prefWidth="361.0"/>
-        </AnchorPane>
-    </Tab>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NurikabeBoardController">
+    <tabs>
+        <Tab text="Gra">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: grey;">
+                    <children>
+                        <GridPane fx:id="buttonGrid" alignment="center" hgap="10" prefHeight="571.0" prefWidth="533.0" vgap="10">
+                        </GridPane>
+                        <Button layoutX="587.0" layoutY="509.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Sprawdź rozwiązanie" />
+                        <Pane layoutX="500.0" layoutY="116.0" prefHeight="311.0" prefWidth="300.0">
+                            <children>
+                                <Text fill="WHITE" layoutX="70.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kolory pomocnicze">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="WHITE" layoutX="90.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kolory główne">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </Text>
+                                <CheckBox fx:id="colorWhite" layoutX="54.0" layoutY="67.0" mnemonicParsing="false" onAction="#handleColorWhite" prefHeight="25.0" prefWidth="70.0" scaleX="1.5" scaleY="1.5" text="Wyspa">
+                                    <effect>
+                                        <ColorAdjust brightness="1.0" contrast="1.0" saturation="1.0" />
+                                    </effect>
+                                </CheckBox>
+                                <CheckBox fx:id="colorBlack" layoutX="196.0" layoutY="67.0" mnemonicParsing="false" onAction="#handleColorBlack" prefHeight="25.0" prefWidth="70.0" scaleX="1.5" scaleY="1.5" text="Fosa">
+                                    <effect>
+                                        <ColorAdjust brightness="-1.0" />
+                                    </effect>
+                                </CheckBox>
+                                <CheckBox fx:id="colorBlue" layoutX="52.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleColorBlue" scaleX="1.5" scaleY="1.5" textFill="#dd2a2a" textOverrun="CLIP">
+                                    <effect>
+                                        <ColorAdjust hue="-1.0" saturation="1.0" />
+                                    </effect>
+                                </CheckBox>
+                                <CheckBox fx:id="colorPink" layoutX="220.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleColorPink" scaleX="1.5" scaleY="1.5">
+                                    <effect>
+                                        <ColorAdjust contrast="0.03" hue="-0.37" saturation="0.65" />
+                                    </effect>
+                                </CheckBox>
+                                <CheckBox fx:id="colorGreen" layoutX="140.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleColorGreen" scaleX="1.5" scaleY="1.5">
+                                    <effect>
+                                        <ColorAdjust hue="0.51" saturation="0.72" />
+                                    </effect>
+                                </CheckBox>
+                            </children>
+                        </Pane>
+                        <Button layoutX="544.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="67.0" style="-fx-background-color: red;" text="Cofnij" />
+                        <Button layoutX="687.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="73.0" style="-fx-background-color: green;" text="Ponów" />
+                        <Text fill="WHITE" layoutX="599.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Twój czas:">
+                            <font>
+                                <Font size="23.0" />
+                            </font>
+                        </Text>
+                        <TextField layoutX="559.0" layoutY="50.0" prefHeight="66.0" prefWidth="182.0" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Ranking">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TextArea layoutX="43.0" layoutY="30.0" prefHeight="345.0" prefWidth="361.0" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
 </TabPane>

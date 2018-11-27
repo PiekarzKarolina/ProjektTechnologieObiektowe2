@@ -2,12 +2,6 @@ package game;
 
 import controller.NurikabeController;
 import javafx.application.Application;
-import javafx.embed.swing.JFXPanel;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
