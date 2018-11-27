@@ -1,12 +1,14 @@
 package controller;
 
+import command.CommandRegistry;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.layout.GridPane;
-import model.Score;
-import command.CommandRegistry;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.layout.GridPane;
 import model.Board;
+import model.Score;
 
 public class NurikabeBoardController {
     private NurikabeController controller;
@@ -14,9 +16,25 @@ public class NurikabeBoardController {
     private Board board;
     private Score score;
 
-    private Button checkButton;
-    private Button newGameButton;
-    private Button rankButton;
+    @FXML
+    private CheckBox colorWhite;
+
+    @FXML
+    private CheckBox colorBlack;
+
+    @FXML
+    private CheckBox colorBlue;
+
+    @FXML
+    private CheckBox colorGreen;
+
+    @FXML
+    private CheckBox colorPink;
+
+    private enum ActualColor {White, Black, Blue, Green, Pink, Null}
+
+    ActualColor actualColor = ActualColor.Null;
+
 
     private static final int NUM_BUTTON_LINES = 10;
     private static final int BUTTONS_PER_LINE = 10;
@@ -42,23 +60,115 @@ public class NurikabeBoardController {
 
     }
 
-    public void handleCheckAction() {
-        //TODO
+    @FXML
+    public void handleColorWhite(ActionEvent event) {
+        if (colorWhite.isSelected()) {
+
+            switch (actualColor) {
+                case Black:
+                    colorBlack.setSelected(false);
+                case Blue:
+                    colorBlue.setSelected(false);
+                case Green:
+                    colorGreen.setSelected(false);
+                case Pink:
+                    colorPink.setSelected(false);
+                case Null:
+                    actualColor = ActualColor.White;
+            }
+            } else {
+            actualColor = ActualColor.Null;
+        }
     }
 
-    public void handleColor1() {
-        //TODO
+    @FXML
+    public void handleColorBlack(ActionEvent event) {
+        if (colorBlack.isSelected()) {
+
+            switch (actualColor) {
+                case White:
+                    colorWhite.setSelected(false);
+                case Blue:
+                    colorBlue.setSelected(false);
+                case Green:
+                    colorGreen.setSelected(false);
+                case Pink:
+                    colorPink.setSelected(false);
+                case Null:
+                    actualColor = ActualColor.Black;
+            }
+        }
+        else{
+            actualColor = ActualColor.Null;
+        }
     }
 
-    public void handleColor2() {
-        //TODO
+    @FXML
+    public void handleColorBlue(ActionEvent event) {
+        System.out.println("blue");
+        if (colorBlue.isSelected()) {
+
+            switch (actualColor) {
+                case White:
+                    colorWhite.setSelected(false);
+                case Black:
+                    colorBlack.setSelected(false);
+                case Green:
+                    colorGreen.setSelected(false);
+                case Pink:
+                    colorPink.setSelected(false);
+                case Null:
+                    actualColor = ActualColor.Blue;
+            }
+        }
+        else{
+            actualColor = ActualColor.Null;
+        }
     }
 
-    public void handleNewGameAction() {
-        //TODO
+    @FXML
+    public void handleColorGreen(ActionEvent event) {
+        System.out.println("green");
+        if (colorGreen.isSelected()) {
+
+            switch (actualColor) {
+                case White:
+                    colorWhite.setSelected(false);
+                case Black:
+                    colorBlack.setSelected(false);
+                case Blue:
+                    colorBlue.setSelected(false);
+                case Pink:
+                    colorPink.setSelected(false);
+                case Null:
+                    actualColor = ActualColor.Green;
+            }
+        }
+        else{
+            actualColor = ActualColor.Null;
+        }
     }
 
-    public void handleRankAction() {
-        //TODO
+    @FXML
+    public void handleColorPink(ActionEvent event) {
+        System.out.println("pink");
+        if (colorPink.isSelected()) {
+
+            switch (actualColor) {
+                case White:
+                    colorWhite.setSelected(false);
+                case Black:
+                    colorBlack.setSelected(false);
+                case Green:
+                    colorGreen.setSelected(false);
+                case Blue:
+                    colorBlue.setSelected(false);
+                case Null:
+                    actualColor = ActualColor.Pink;
+            }
+        } else {
+            actualColor = ActualColor.Null;
+        }
+
     }
 }

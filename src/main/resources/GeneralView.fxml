@@ -16,12 +16,6 @@
             <Button layoutX="587.0" layoutY="509.0" mnemonicParsing="false"
                     style="-fx-background-color: white;" text="Sprawdź rozwiązanie"/>
             <Pane layoutX="500.0" layoutY="116.0" prefHeight="311.0" prefWidth="300.0">
-                <CheckBox layoutX="52.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
-                          scaleY="1.5" textFill="#dd2a2a" textOverrun="CLIP">
-                    <effect>
-                        <ColorAdjust hue="-1.0" saturation="1.0"/>
-                    </effect>
-                </CheckBox>
                 <Text fill="WHITE" layoutX="70.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0"
                       text="Kolory pomocnicze">
                     <font>
@@ -34,30 +28,31 @@
                         <Font size="19.0"/>
                     </font>
                 </Text>
-                <CheckBox layoutX="54.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0"
+                <CheckBox fx:id="colorWhite"  onAction="#handleColorWhite" layoutX="54.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0"
                           prefWidth="70.0" scaleX="1.5" scaleY="1.5" text="Wyspa">
                     <effect>
                         <ColorAdjust brightness="1.0" contrast="1.0" saturation="1.0"/>
                     </effect>
                 </CheckBox>
-                <CheckBox layoutX="196.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0"
+                <CheckBox fx:id="colorBlack" onAction="#handleColorBlack" layoutX="196.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0"
                           prefWidth="70.0" scaleX="1.5" scaleY="1.5" text="Fosa">
                     <effect>
                         <ColorAdjust brightness="-1.0"/>
                     </effect>
                 </CheckBox>
-                <CheckBox layoutX="78.0" layoutY="172.0" mnemonicParsing="false">
+                <CheckBox  fx:id="colorBlue" onAction="#handleColorBlue" layoutX="52.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
+                           scaleY="1.5" textFill="#dd2a2a" textOverrun="CLIP">
                     <effect>
-                        <PerspectiveTransform/>
+                        <ColorAdjust hue="-1.0" saturation="1.0"/>
                     </effect>
                 </CheckBox>
-                <CheckBox layoutX="220.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
+                <CheckBox fx:id="colorPink" onAction="#handleColorPink" layoutX="220.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
                           scaleY="1.5">
                     <effect>
                         <ColorAdjust contrast="0.03" hue="-0.37" saturation="0.65"/>
                     </effect>
                 </CheckBox>
-                <CheckBox layoutX="140.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
+                <CheckBox fx:id="colorGreen" onAction="#handleColorGreen" layoutX="140.0" layoutY="172.0" mnemonicParsing="false" scaleX="1.5"
                           scaleY="1.5">
                     <effect>
                         <ColorAdjust hue="0.51" saturation="0.72"/>
