@@ -11,26 +11,35 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0"
          prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8"
-         xmlns:fx="http://javafx.com/fxml/1">
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="controller.NurikabeController">
     <tabs>
         <Tab text="Gra">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
                             style="-fx-background-color: grey;">
                     <children>
-                        <TableView editable="true" layoutX="17.0" layoutY="30.0" prefHeight="530.0" prefWidth="480.0"
-                                   AnchorPane.topAnchor="30.0">
-                            <columns>
-                                <TableColumn prefWidth="75.0" text="C1"/>
-                                <TableColumn prefWidth="75.0" text="C2"/>
-                            </columns>
-                            <opaqueInsets>
-                                <Insets/>
-                            </opaqueInsets>
-                            <rotationAxis>
-                                <Point3D/>
-                            </rotationAxis>
-                        </TableView>
+                        <!--<TableView editable="true" layoutX="17.0" layoutY="30.0" prefHeight="530.0" prefWidth="480.0"-->
+                        <!--AnchorPane.topAnchor="30.0">-->
+                        <!--<columns>-->
+                        <!--<TableColumn prefWidth="75.0" text="C1"/>-->
+                        <!--<TableColumn prefWidth="75.0" text="C2"/>-->
+                        <!--</columns>-->
+                        <!--<opaqueInsets>-->
+                        <!--<Insets/>-->
+                        <!--</opaqueInsets>-->
+                        <!--<rotationAxis>-->
+                        <!--<Point3D/>-->
+                        <!--</rotationAxis>-->
+                        <!--</TableView>-->
+
+                        <GridPane id="game" fx:id="game" layoutX="17.0" layoutY="30.0" prefHeight="530.0"
+                                  prefWidth="480.0" >
+
+
+                        </GridPane>
+
+
                         <Button layoutX="587.0" layoutY="509.0" mnemonicParsing="false"
                                 style="-fx-background-color: white;" text="Sprawdź rozwiązanie"/>
                         <Pane layoutX="500.0" layoutY="116.0" prefHeight="311.0" prefWidth="300.0">
