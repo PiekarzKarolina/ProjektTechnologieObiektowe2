@@ -1,14 +1,17 @@
 package model;
 
-import java.util.List;
-
 public class Board {
     private CellSet[][] cells;
     private int width;
     private int height;
 
-    private boolean validate(List<CellSet> cells) {
-        //TODO
-        return false;
+    public Board(CellSet[][] cells, int width, int height) {
+        this.cells = cells;
+        this.width = width;
+        this.height = height;
+    }
+
+    public void changeCellColor(int row, int column, Color color){
+        cells[row][column].setColor(color);
     }
 }
