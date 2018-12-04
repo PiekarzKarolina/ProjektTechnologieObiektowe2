@@ -27,6 +27,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '5.3.1'
+    // https://mvnrepository.com/artifact/com.google.inject/guice
+    compile group: 'com.google.inject', name: 'guice', version: '4.0'
 }
 
 apply plugin: 'javafx-gradle-plugin'

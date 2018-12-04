@@ -1,5 +1,7 @@
 package game;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import controller.NurikabeController;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,7 +16,6 @@ public class Nurikabe extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Nurikabe");
 
@@ -24,6 +25,9 @@ public class Nurikabe extends Application {
     }
 
     public static void main(String[] args) {
+        Injector injector = Guice.createInjector(new GameModule());
+        Game game = injector.getInstance(Game.class);
+
         System.out.println("game.Nurikabe");
         launch(args);
     }

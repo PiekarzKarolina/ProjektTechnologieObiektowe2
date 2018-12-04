@@ -1,23 +1,23 @@
 package controller;
 
+import com.google.inject.Inject;
 import command.CommandRegistry;
+import game.Game;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
-import model.Board;
 import model.Color;
-import model.Score;
 
 import java.util.*;
 
 public class NurikabeBoardController {
     private NurikabeController controller;
     private CommandRegistry commandRegistry;
-    private Board board;
-    private Score score;
+
+    @Inject
+    private Game game;
 
     @FXML
     private CheckBox colorWhite;
