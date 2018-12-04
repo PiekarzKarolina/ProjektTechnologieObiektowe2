@@ -5,4 +5,9 @@ public class CellSet {
     private Color color;
 
     //TODO
+
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

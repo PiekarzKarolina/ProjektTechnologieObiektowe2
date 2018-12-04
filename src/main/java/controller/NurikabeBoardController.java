@@ -66,6 +66,8 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
 
+                    board.changeCellColor(row, column, actualColor);
+
                     button.setStyle("-fx-background-color:" + actualColor);
                 });
 
