@@ -8,7 +8,10 @@ import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import model.Board;
+import model.Color;
 import model.Score;
+
+import java.util.*;
 
 public class NurikabeBoardController {
     private NurikabeController controller;
@@ -31,10 +34,9 @@ public class NurikabeBoardController {
     @FXML
     private CheckBox colorPink;
 
-    private enum ActualColor {White, Black, Blue, Green, Pink, Null}
+    private Color actualColor = Color.NONE;
 
-    ActualColor actualColor = ActualColor.Null;
-
+    private HashMap<CheckBox, Color> checkBoxes = new HashMap<>();
 
     private static final int NUM_BUTTON_LINES = 10;
     private static final int BUTTONS_PER_LINE = 10;
@@ -48,37 +50,25 @@ public class NurikabeBoardController {
         buttonGrid.setHgap(BUTTON_PADDING);
         buttonGrid.setVgap(BUTTON_PADDING);
 
+        checkBoxes.put(colorBlack, Color.BLACK);
+        checkBoxes.put(colorBlue, Color.BLUE);
+        checkBoxes.put(colorGreen, Color.GREEN);
+        checkBoxes.put(colorPink, Color.PINK);
+        checkBoxes.put(colorWhite, Color.WHITE);
+
         for (int r = 0; r < NUM_BUTTON_LINES; r++)
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
                 int number = NUM_BUTTON_LINES * r + c;
                 BoardButton button = new BoardButton("   ", r, c);
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                       /* BoardButton clickedButton = (BoardButton) event.getSource();
-                        int row =  clickedButton.getPositionRow();
-                        int column = clickedButton.getPositionColumn();
-                        */
-                        switch (actualColor) {
-                            case White:
-                                button.setStyle("-fx-background-color: white");
-                                break;
-                            case Black:
-                                button.setStyle("-fx-background-color: black");
-                                break;
-                            case Blue:
-                                button.setStyle("-fx-background-color: blue");
-                                break;
-                            case Green:
-                                button.setStyle("-fx-background-color: green");
-                                break;
-                            case Pink:
-                                button.setStyle("-fx-background-color: pink");
-                                break;
-                        }
 
-                    }
+                button.setOnAction(event -> {
+                    BoardButton clickedButton = (BoardButton) event.getSource();
+                    int row = clickedButton.getPositionRow();
+                    int column = clickedButton.getPositionColumn();
+
+                    button.setStyle("-fx-background-color:" + actualColor);
                 });
+
                 buttonGrid.add(button, c, r);
             }
 
@@ -86,140 +76,21 @@ public class NurikabeBoardController {
     }
 
     @FXML
-    public void handleColorWhite(ActionEvent event) {
-        if (colorWhite.isSelected()) {
+    public void handleColor(ActionEvent event) {
+        for (CheckBox checkBox : checkBoxes.keySet()) {
+            Color color = checkBoxes.get(checkBox);
 
-            switch (actualColor) {
-                case Black:
-                    colorBlack.setSelected(false);
-                    break;
-                case Blue:
-                    colorBlue.setSelected(false);
-                    break;
-                case Green:
-                    colorGreen.setSelected(false);
-                    break;
-                case Pink:
-                    colorPink.setSelected(false);
-                    break;
-                case Null:
-                    actualColor = ActualColor.White;
-                    break;
+            if (checkBox.isSelected() && actualColor != color) {
+                actualColor = color;
+
+                for (CheckBox checkBoxToDisable : checkBoxes.keySet()) {
+                    if (checkBox != checkBoxToDisable) checkBoxToDisable.setSelected(false);
+                }
+
+                return;
             }
-            actualColor = ActualColor.White;
-            } else {
-            actualColor = ActualColor.Null;
         }
     }
 
-    @FXML
-    public void handleColorBlack(ActionEvent event) {
-        if (colorBlack.isSelected()) {
 
-            switch (actualColor) {
-                case White:
-                    colorWhite.setSelected(false);
-                    break;
-                case Blue:
-                    colorBlue.setSelected(false);
-                    break;
-                case Green:
-                    colorGreen.setSelected(false);
-                    break;
-                case Pink:
-                    colorPink.setSelected(false);
-                    break;
-                case Null:
-                    actualColor = ActualColor.Black;
-                    break;
-            }
-            actualColor = ActualColor.Black;
-        }
-        else{
-            actualColor = ActualColor.Null;
-        }
-    }
-
-    @FXML
-    public void handleColorBlue(ActionEvent event) {
-        if (colorBlue.isSelected()) {
-
-            switch (actualColor) {
-                case White:
-                    colorWhite.setSelected(false);
-                    break;
-                case Black:
-                    colorBlack.setSelected(false);
-                    break;
-                case Green:
-                    colorGreen.setSelected(false);
-                    break;
-                case Pink:
-                    colorPink.setSelected(false);
-                    break;
-                case Null:
-                    actualColor = ActualColor.Blue;
-                    break;
-            }
-            actualColor = ActualColor.Blue;
-        }
-        else{
-            actualColor = ActualColor.Null;
-        }
-    }
-
-    @FXML
-    public void handleColorGreen(ActionEvent event) {
-        if (colorGreen.isSelected()) {
-
-            switch (actualColor) {
-                case White:
-                    colorWhite.setSelected(false);
-                    break;
-                case Black:
-                    colorBlack.setSelected(false);
-                    break;
-                case Blue:
-                    colorBlue.setSelected(false);
-                    break;
-                case Pink:
-                    colorPink.setSelected(false);
-                    break;
-                case Null:
-                    actualColor = ActualColor.Green;
-                    break;
-            }
-            actualColor = ActualColor.Green;
-        }
-        else{
-            actualColor = ActualColor.Null;
-        }
-    }
-
-    @FXML
-    public void handleColorPink(ActionEvent event) {
-        if (colorPink.isSelected()) {
-
-            switch (actualColor) {
-                case White:
-                    colorWhite.setSelected(false);
-                    break;
-                case Black:
-                    colorBlack.setSelected(false);
-                    break;
-                case Green:
-                    colorGreen.setSelected(false);
-                    break;
-                case Blue:
-                    colorBlue.setSelected(false);
-                    break;
-                case Null:
-                    actualColor = ActualColor.Pink;
-                    break;
-            }
-            actualColor = ActualColor.Pink;
-        } else {
-            actualColor = ActualColor.Null;
-        }
-    }
 }
