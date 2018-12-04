@@ -1,12 +1,17 @@
 package controller;
 
+import command.CommandRegistry;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
-import model.Score;
-import command.CommandRegistry;
-import javafx.scene.control.Button;
 import model.Board;
+import model.Color;
+import model.Score;
+
+import java.util.*;
 
 public class NurikabeBoardController {
     private NurikabeController controller;
@@ -14,9 +19,24 @@ public class NurikabeBoardController {
     private Board board;
     private Score score;
 
-    private Button checkButton;
-    private Button newGameButton;
-    private Button rankButton;
+    @FXML
+    private CheckBox colorWhite;
+
+    @FXML
+    private CheckBox colorBlack;
+
+    @FXML
+    private CheckBox colorBlue;
+
+    @FXML
+    private CheckBox colorGreen;
+
+    @FXML
+    private CheckBox colorPink;
+
+    private Color actualColor = Color.NONE;
+
+    private HashMap<CheckBox, Color> checkBoxes = new HashMap<>();
 
     private static final int NUM_BUTTON_LINES = 10;
     private static final int BUTTONS_PER_LINE = 10;
@@ -30,35 +50,47 @@ public class NurikabeBoardController {
         buttonGrid.setHgap(BUTTON_PADDING);
         buttonGrid.setVgap(BUTTON_PADDING);
 
-        for (int r = 0; r < NUM_BUTTON_LINES; r++) {
+        checkBoxes.put(colorBlack, Color.BLACK);
+        checkBoxes.put(colorBlue, Color.BLUE);
+        checkBoxes.put(colorGreen, Color.GREEN);
+        checkBoxes.put(colorPink, Color.PINK);
+        checkBoxes.put(colorWhite, Color.WHITE);
+
+        for (int r = 0; r < NUM_BUTTON_LINES; r++)
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
                 int number = NUM_BUTTON_LINES * r + c;
-                Button button = new Button(String.valueOf(number));
-                button.setText("   ");
+                BoardButton button = new BoardButton("   ", r, c);
+
+                button.setOnAction(event -> {
+                    BoardButton clickedButton = (BoardButton) event.getSource();
+                    int row = clickedButton.getPositionRow();
+                    int column = clickedButton.getPositionColumn();
+
+                    button.setStyle("-fx-background-color:" + actualColor);
+                });
+
                 buttonGrid.add(button, c, r);
             }
+
+
+    }
+
+    @FXML
+    public void handleColor(ActionEvent event) {
+        for (CheckBox checkBox : checkBoxes.keySet()) {
+            Color color = checkBoxes.get(checkBox);
+
+            if (checkBox.isSelected() && actualColor != color) {
+                actualColor = color;
+
+                for (CheckBox checkBoxToDisable : checkBoxes.keySet()) {
+                    if (checkBox != checkBoxToDisable) checkBoxToDisable.setSelected(false);
+                }
+
+                return;
+            }
         }
-
-
     }
 
-    public void handleCheckAction() {
-        //TODO
-    }
 
-    public void handleColor1() {
-        //TODO
-    }
-
-    public void handleColor2() {
-        //TODO
-    }
-
-    public void handleNewGameAction() {
-        //TODO
-    }
-
-    public void handleRankAction() {
-        //TODO
-    }
 }
