@@ -25,9 +25,6 @@ public class Nurikabe extends Application {
     }
 
     public static void main(String[] args) {
-        Injector injector = Guice.createInjector(new GameModule());
-        Game game = injector.getInstance(Game.class);
-
         System.out.println("game.Nurikabe");
         launch(args);
     }

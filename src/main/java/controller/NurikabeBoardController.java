@@ -16,7 +16,6 @@ public class NurikabeBoardController {
     private NurikabeController controller;
     private CommandRegistry commandRegistry;
 
-    @Inject
     private Game game;
 
     @FXML
@@ -66,9 +65,9 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
 
-                    board.changeCellColor(row, column, actualColor);
-
-                    button.setStyle("-fx-background-color:" + actualColor);
+//                    game.getUserBoard().changeCellColor(row, column, actualColor);
+                    if (actualColor != Color.NONE)
+                        button.setStyle("-fx-background-color:" + actualColor);
                 });
 
                 buttonGrid.add(button, c, r);
@@ -92,6 +91,8 @@ public class NurikabeBoardController {
                 return;
             }
         }
+
+        actualColor = Color.NONE;
     }
 
 

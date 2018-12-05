@@ -11,9 +11,13 @@ public class Game {
     private Board finalBoard;
     private Score score;
 
-    private boolean validate(List<CellSet> cells) {
+    private List<CellSet> validate() {
         //TODO
         //Compare boards and return difference
-        return false;
+        return null;
+    }
+
+    public Board getUserBoard() {
+        return userBoard;
     }
 }
