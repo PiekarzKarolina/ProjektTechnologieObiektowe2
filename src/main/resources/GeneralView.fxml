@@ -37,13 +37,13 @@
                                 <CheckBox fx:id="colorWhite" layoutX="54.0" layoutY="67.0" mnemonicParsing="false"
                                           onAction="#handleColor"  scaleX="1.5" scaleY="1.5" text="Wyspa">
                                     <effect>
-                                        <ColorAdjust brightness="1.0" contrast="1.0" saturation="1.0"/>
+                                        <ColorAdjust brightness="0.4" contrast="1.0" />
                                     </effect>
                                 </CheckBox>
                                 <CheckBox fx:id="colorBlack" layoutX="196.0" layoutY="67.0" mnemonicParsing="false"
                                           onAction="#handleColor"  scaleX="1.5" scaleY="1.5" text="Fosa">
                                     <effect>
-                                        <ColorAdjust brightness="-1.0"/>
+                                        <ColorAdjust brightness="-0.65" />
                                     </effect>
                                 </CheckBox>
                                 <CheckBox fx:id="colorBlue" layoutX="52.0" layoutY="172.0" mnemonicParsing="false"
