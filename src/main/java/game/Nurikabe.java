@@ -1,7 +1,4 @@
 package game;
-
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import controller.NurikabeController;
 import javafx.application.Application;
 import javafx.stage.Stage;

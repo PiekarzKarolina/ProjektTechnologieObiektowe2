@@ -1,15 +1,22 @@
 package game;
 
+import functionality.BoardInitializer;
 import model.Board;
+import model.DoubleBoard;
 import model.CellSet;
 import model.Score;
 
 import java.util.List;
 
 public class Game {
-    private Board userBoard;
-    private Board finalBoard;
+    private DoubleBoard board;
     private Score score;
+
+    Game (String boardName){
+        BoardInitializer boardInitializer = new BoardInitializer();
+        this.board = boardInitializer.initializeBoard(boardName);
+    }
+
 
     private List<CellSet> validate() {
         //TODO
@@ -18,6 +25,6 @@ public class Game {
     }
 
     public Board getUserBoard() {
-        return userBoard;
+        return board.getUserBoard();
     }
 }
