@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
         classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+        classpath group: 'org.apache.commons', name: 'commons-csv', version: '1.5'
     }
     repositories {
         mavenLocal()
