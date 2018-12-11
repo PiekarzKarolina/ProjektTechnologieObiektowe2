@@ -1,6 +1,8 @@
 package functionality;
 
 import model.Board;
+import model.Cell;
+import model.CellSet;
 import model.DoubleBoard;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -9,6 +11,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
+import java.util.ArrayList;
 
 public class BoardInitializer {
 
@@ -24,6 +27,8 @@ public class BoardInitializer {
             int height = 0;
             int width = 0;
             int i = 0;
+            ArrayList<ArrayList<Cell>> finalCells;
+            ArrayList<ArrayList<Cell>> startingCells;
 
             for (CSVRecord record : csvParser) {
                 int j = 0;
@@ -31,6 +36,7 @@ public class BoardInitializer {
                 for (String cell : record) {
                     switch (cell) {
                         case "B":
+                            CellSet oneCell = new CellSet();
                             System.out.println("BLACK");
                             break;
                         case "W":
@@ -53,7 +59,7 @@ public class BoardInitializer {
             e.printStackTrace();
         }
 
-//        return new DoubleBoard(new Board(), new Board());
+        return new DoubleBoard(new Board(), new Board());
         return null;
     }
 
