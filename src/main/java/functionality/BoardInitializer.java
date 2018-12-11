@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardInitializer {
-    Cell[][] startingCells;
-    Cell[][] finalCells;
-    int height, width;
+    private Cell[][] startingCells;
+    private Cell[][] finalCells;
+    private int height, width;
 
     public DoubleBoard initializeBoard(String boardName) {
         try {
@@ -37,19 +37,16 @@ public class BoardInitializer {
                 for (String cell : record) {
                     switch (cell) {
                         case "B":
-                            System.out.println("B" + i + j);
                             finalCells[i][j] = new Cell(Color.BLACK);
-                            startingCells[i][j] = new Cell(Color.NONE);
+                            startingCells[i][j] = new Cell(Color.WHITE);
                             break;
                         case "W":
-                            System.out.println("W" + i + j);
                             finalCells[i][j] = new Cell(Color.WHITE);
-                            startingCells[i][j] = new Cell(Color.NONE);
+                            startingCells[i][j] = new Cell(Color.WHITE);
                             break;
                         default:
-                            System.out.println("def" + i + j);
-                            finalCells[i][j] = new Cell(Color.NONE, cell);
-                            startingCells[i][j] = new Cell(Color.NONE, cell);
+                            finalCells[i][j] = new Cell(cell);
+                            startingCells[i][j] = new Cell(cell);
                             break;
                     }
                     j++;

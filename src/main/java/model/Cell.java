@@ -11,9 +11,13 @@ public class Cell {
         this.islandNumber = "  ";
     }
 
-    public Cell(Color color, String islandNumber) {
-        this.color = color;
+    public Cell(String islandNumber) {
+        this.color = Color.WHITE;
         this.islandNumber = islandNumber;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public void setColor(Color color) {

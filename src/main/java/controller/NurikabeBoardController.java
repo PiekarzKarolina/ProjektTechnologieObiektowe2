@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import model.Board;
+import model.Cell;
 import model.Color;
 
 import java.util.*;
@@ -86,7 +87,9 @@ public class NurikabeBoardController {
         Board userBoard = game.getUserBoard();
 
         buttons.forEach(button -> {
-            button.setText(userBoard.getCells()[button.getPositionRow()][button.getPositionColumn()].getIslandNumber());
+            Cell cell = userBoard.getCells()[button.getPositionRow()][button.getPositionColumn()];
+            button.setText(cell.getIslandNumber());
+            button.setStyle("-fx-background-color:" + cell.getColor());
         });
     }
 
