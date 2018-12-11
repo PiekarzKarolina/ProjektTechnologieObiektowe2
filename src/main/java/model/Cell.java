@@ -27,4 +27,14 @@ public class Cell {
     public String getIslandNumber() {
         return islandNumber;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Cell)) return false;
+        Cell comparedCell = (Cell) obj;
+
+        return (this.color == comparedCell.color && this.islandNumber.equals(comparedCell.islandNumber));
+
+    }
 }
