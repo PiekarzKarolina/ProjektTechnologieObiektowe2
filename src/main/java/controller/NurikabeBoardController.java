@@ -1,23 +1,23 @@
 package controller;
 
 import command.CommandRegistry;
+import game.Game;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import model.Board;
+import model.Cell;
 import model.Color;
-import model.Score;
 
 import java.util.*;
 
 public class NurikabeBoardController {
     private NurikabeController controller;
     private CommandRegistry commandRegistry;
-    private Board board;
-    private Score score;
+
+    private Game game;
 
     @FXML
     private CheckBox colorWhite;
@@ -38,12 +38,19 @@ public class NurikabeBoardController {
 
     private HashMap<CheckBox, Color> checkBoxes = new HashMap<>();
 
+    private ArrayList<BoardButton> buttons = new ArrayList<>();
+
     private static final int NUM_BUTTON_LINES = 10;
     private static final int BUTTONS_PER_LINE = 10;
     private double BUTTON_PADDING = 0;
 
     @FXML
     GridPane buttonGrid;
+
+    public void setGame(Game game) {
+        System.out.println("Game set");
+        this.game = game;
+    }
 
     public void initialize() {
         buttonGrid.setPadding(new Insets(BUTTON_PADDING));
@@ -58,7 +65,7 @@ public class NurikabeBoardController {
 
         for (int r = 0; r < NUM_BUTTON_LINES; r++)
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
-                int number = NUM_BUTTON_LINES * r + c;
+
                 BoardButton button = new BoardButton("   ", r, c);
 
                 button.setOnAction(event -> {
@@ -66,16 +73,26 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
 
-                    board.changeCellColor(row, column, actualColor);
-
-                    button.setStyle("-fx-background-color:" + actualColor);
+                    game.getUserBoard().changeCellColor(row, column, actualColor);
+                    if (actualColor != Color.NONE)
+                        button.setStyle("-fx-background-color:" + actualColor);
                 });
 
                 buttonGrid.add(button, c, r);
+                buttons.add(button);
             }
-
-
     }
+
+    public void populateBoard(){
+        Board userBoard = game.getUserBoard();
+
+        buttons.forEach(button -> {
+            Cell cell = userBoard.getCells()[button.getPositionRow()][button.getPositionColumn()];
+            button.setText(cell.getIslandNumber());
+            button.setStyle("-fx-background-color:" + cell.getColor());
+        });
+    }
+
 
     @FXML
     public void handleColor(ActionEvent event) {
@@ -92,6 +109,8 @@ public class NurikabeBoardController {
                 return;
             }
         }
+
+        actualColor = Color.NONE;
     }
 
 

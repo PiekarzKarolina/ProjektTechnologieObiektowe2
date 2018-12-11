@@ -14,13 +14,12 @@ public class Nurikabe extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Nurikabe");
 
         this.controller = new NurikabeController(primaryStage);
-        this.controller.initLayout();
 
+        this.controller.initLayout(new Game("board1.csv"));
     }
 
     public static void main(String[] args) {
