@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class NurikabeController {
     private Stage primaryStage;
-    private CommandRegistry commandRegistry;
+    private CommandRegistry commandRegistry = new CommandRegistry();
 
     public NurikabeController(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -32,6 +32,8 @@ public class NurikabeController {
             NurikabeBoardController controller = loader.getController();
             controller.setGame(game);
             controller.populateBoard();
+            controller.setCommandRegistry(commandRegistry);
+
 
         } catch (IOException e) {
             // don't do this in common apps

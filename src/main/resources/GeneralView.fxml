@@ -67,9 +67,9 @@
                             </children>
                         </Pane>
                         <Button layoutX="544.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0"
-                                prefWidth="67.0" style="-fx-background-color: red;" text="Cofnij"/>
+                                prefWidth="67.0" style="-fx-background-color: red;" text="Cofnij" onAction="#handleUndo"/>
                         <Button layoutX="687.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0"
-                                prefWidth="73.0" style="-fx-background-color: green;" text="Ponów"/>
+                                prefWidth="73.0" style="-fx-background-color: green;" text="Ponów" onAction="#handleRedo"/>
                         <Text fill="WHITE" layoutX="599.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Twój czas:">
                             <font>
