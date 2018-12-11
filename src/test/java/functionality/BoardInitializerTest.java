@@ -12,7 +12,6 @@ class BoardInitializerTest {
     @Test
     void initializeBoard() {
         //given
-        Boolean isGood = true;
         String boardName = "easy_board1";
         BoardInitializer initializer = new BoardInitializer();
         Cell[][] startingCells = new Cell[5][5];
