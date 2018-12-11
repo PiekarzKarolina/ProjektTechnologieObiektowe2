@@ -1,26 +1,40 @@
 package command;
 
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class CommandRegistry {
-    private List<Command> stack;
-
-    public void executeCommand() {
-
+    private ObservableList<Command> commandStack = FXCollections.observableArrayList();
+    private ObservableList<Command> redoCommandStack = FXCollections.observableArrayList();
+    public void executeCommand(Command command) {
+        command.execute();
+        commandStack.add(command);
+        redoCommandStack.clear();
     }
 
 
     public void redo() {
-
+        if(!redoCommandStack.isEmpty()){
+            Command command = redoCommandStack.remove(redoCommandStack.size()-1);
+            command.redo();
+            redoCommandStack.add(command);
+        }
     }
 
     public void undo() {
-
+        if(!redoCommandStack.isEmpty()){
+            Command command = redoCommandStack.remove(redoCommandStack.size()-1);
+            command.undo();
+            redoCommandStack.add(command);
+        }
+        else if(!commandStack.isEmpty()){
+            Command command = commandStack.remove(commandStack.size()-1);
+            command.undo();
+            redoCommandStack.add(command);
+        }
     }
 
-    public List<Command> getStack() {
-        return stack;
+    public ObservableList<Command> getCommandStack() {
+        return commandStack;
     }
-
-
 }

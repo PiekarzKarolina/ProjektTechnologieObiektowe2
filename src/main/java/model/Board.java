@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
@@ -29,6 +28,8 @@ public class Board {
     public void changeCellColor(int row, int column, Color color) {
        cells[row][column].setColor(color);
     }
+
+    public Color getCellColor(int row, int column) {return cells[row][column].getColor();}
 
     private List<Cell> validate() {
         //TODO

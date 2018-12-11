@@ -1,23 +1,25 @@
 package controller;
 
+import command.ChangeColorCommand;
 import command.CommandRegistry;
 import game.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import model.Board;
 import model.Cell;
 import model.Color;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class NurikabeBoardController {
-    private NurikabeController controller;
-    private CommandRegistry commandRegistry;
 
     private Game game;
+    private CommandRegistry commandRegistry;
 
     @FXML
     private CheckBox colorWhite;
@@ -33,6 +35,12 @@ public class NurikabeBoardController {
 
     @FXML
     private CheckBox colorPink;
+
+    @FXML
+    private Button undoButton;
+
+    @FXML
+    private Button redoButton;
 
     private Color actualColor = Color.NONE;
 
@@ -72,10 +80,9 @@ public class NurikabeBoardController {
                     BoardButton clickedButton = (BoardButton) event.getSource();
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
-
-                    game.getUserBoard().changeCellColor(row, column, actualColor);
-                    if (actualColor != Color.NONE)
-                        button.setStyle("-fx-background-color:" + actualColor);
+                    Color previousColor = game.getUserBoard().getCellColor(row, column);
+                    ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game, button);
+                    commandRegistry.executeCommand(changeColorCommand);
                 });
 
                 buttonGrid.add(button, c, r);
@@ -111,6 +118,18 @@ public class NurikabeBoardController {
         }
 
         actualColor = Color.NONE;
+    }
+
+    public void handleUndo(ActionEvent event) {
+        commandRegistry.undo();
+    }
+
+    public void handleRedo(ActionEvent event) {
+        commandRegistry.redo();
+    }
+
+    public void setCommandRegistry(CommandRegistry commandRegistry) {
+        this.commandRegistry = commandRegistry;
     }
 
 
