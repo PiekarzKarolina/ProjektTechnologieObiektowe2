@@ -44,6 +44,8 @@ public class NurikabeBoardController {
 
     private Color actualColor = Color.NONE;
 
+    private Color previousColor;
+
     private HashMap<CheckBox, Color> checkBoxes = new HashMap<>();
 
     private ArrayList<BoardButton> buttons = new ArrayList<>();
@@ -80,7 +82,7 @@ public class NurikabeBoardController {
                     BoardButton clickedButton = (BoardButton) event.getSource();
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
-                    Color previousColor = game.getUserBoard().getCellColor(row, column);
+                    previousColor = game.getUserBoard().getCellColor(row, column);
                     ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game, button);
                     commandRegistry.executeCommand(changeColorCommand);
                 });

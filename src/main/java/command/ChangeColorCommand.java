@@ -30,13 +30,14 @@ public class ChangeColorCommand implements Command {
 
     @Override
     public void redo() {
-        game.getUserBoard().changeCellColor(row, column, previousColor);
+        game.getUserBoard().changeCellColor(row, column, actualColor);
+        button.setStyle("-fx-background-color:" + actualColor);
     }
 
     @Override
     public void undo() {
-        System.out.println(previousColor);
         game.getUserBoard().changeCellColor(row, column, previousColor);
+        button.setStyle("-fx-background-color:" + previousColor);
     }
 
 }

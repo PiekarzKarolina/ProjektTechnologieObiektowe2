@@ -22,12 +22,8 @@ public class CommandRegistry {
     }
 
     public void undo() {
-        if(!redoCommandStack.isEmpty()){
-            Command command = redoCommandStack.remove(redoCommandStack.size()-1);
-            command.undo();
-            redoCommandStack.add(command);
-        }
-        else if(!commandStack.isEmpty()){
+
+        if(!commandStack.isEmpty()){
             Command command = commandStack.remove(commandStack.size()-1);
             command.undo();
             redoCommandStack.add(command);
