@@ -2,8 +2,8 @@ package game;
 
 import functionality.BoardInitializer;
 import model.Board;
+import model.Cell;
 import model.DoubleBoard;
-import model.CellSet;
 import model.Score;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class Game {
     }
 
 
-    private List<CellSet> validate() {
+    private List<Cell> validate() {
         //TODO
         //Compare boards and return difference
         return null;

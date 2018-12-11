@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
+import model.Board;
 import model.Color;
 
 import java.util.*;
@@ -58,17 +59,19 @@ public class NurikabeBoardController {
         checkBoxes.put(colorPink, Color.PINK);
         checkBoxes.put(colorWhite, Color.WHITE);
 
+        Board userBoard = game.getUserBoard();
+
         for (int r = 0; r < NUM_BUTTON_LINES; r++)
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
-                int number = NUM_BUTTON_LINES * r + c;
-                BoardButton button = new BoardButton("   ", r, c);
+
+                BoardButton button = new BoardButton(userBoard.getCells()[r][c].getIslandNumber(), r, c);
 
                 button.setOnAction(event -> {
                     BoardButton clickedButton = (BoardButton) event.getSource();
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
 
-//                    game.getUserBoard().changeCellColor(row, column, actualColor);
+                    game.getUserBoard().changeCellColor(row, column, actualColor);
                     if (actualColor != Color.NONE)
                         button.setStyle("-fx-background-color:" + actualColor);
                 });
