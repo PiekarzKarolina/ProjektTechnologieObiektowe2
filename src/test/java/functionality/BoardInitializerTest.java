@@ -12,7 +12,7 @@ class BoardInitializerTest {
     @Test
     void initializeBoard() {
         //given
-        String boardName = "easy_board1";
+        String boardName = "easy_board1.csv";
         BoardInitializer initializer = new BoardInitializer();
         Cell[][] startingCells = new Cell[5][5];
         Cell[][] finalCells = new Cell[5][5];
