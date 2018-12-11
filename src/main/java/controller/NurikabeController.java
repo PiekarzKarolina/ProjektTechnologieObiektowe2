@@ -1,6 +1,7 @@
 package controller;
 
 import command.CommandRegistry;
+import game.Game;
 import game.Nurikabe;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,14 +18,19 @@ public class NurikabeController {
         this.primaryStage = primaryStage;
     }
 
-    public void initLayout() {
+    public void initLayout(Game game) {
         try {
+            String xmlFile = "/GeneralView.fxml";
+
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Nurikabe.class.getResource("/GeneralView.fxml"));
+            loader.setLocation(Nurikabe.class.getResource(xmlFile));
             TabPane rootLayout = (TabPane) loader.load();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            NurikabeBoardController controller = loader.getController();
+            controller.setGame(game);
 
         } catch (IOException e) {
             // don't do this in common apps

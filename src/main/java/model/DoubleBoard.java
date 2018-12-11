@@ -21,7 +21,6 @@ public class DoubleBoard {
     }
 
     public DoubleBoard(Board userBoard, Board finalBoard) {
-
         this.userBoard = userBoard;
         this.finalBoard = finalBoard;
     }

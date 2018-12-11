@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.inject.Inject;
 import command.CommandRegistry;
 import game.Game;
 import javafx.event.ActionEvent;
@@ -43,6 +42,10 @@ public class NurikabeBoardController {
 
     @FXML
     GridPane buttonGrid;
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
     public void initialize() {
         buttonGrid.setPadding(new Insets(BUTTON_PADDING));

@@ -12,9 +12,8 @@ public class Game {
     private DoubleBoard board;
     private Score score;
 
-    Game (String boardName){
-        BoardInitializer boardInitializer = new BoardInitializer();
-        this.board = boardInitializer.initializeBoard(boardName);
+    public Game(String boardName) {
+        this.board = new BoardInitializer().initializeBoard(boardName);
     }
 
 
