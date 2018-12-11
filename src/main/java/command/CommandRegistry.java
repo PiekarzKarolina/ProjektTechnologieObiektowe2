@@ -29,8 +29,4 @@ public class CommandRegistry {
             redoCommandStack.add(command);
         }
     }
-
-    public ObservableList<Command> getCommandStack() {
-        return commandStack;
-    }
 }

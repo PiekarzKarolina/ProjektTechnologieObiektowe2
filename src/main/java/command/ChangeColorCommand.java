@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import model.Color;
 
 public class ChangeColorCommand implements Command {
-    private CommandRegistry commandRegistry;
     private Game game;
     private int row, column;
     private Color actualColor;
