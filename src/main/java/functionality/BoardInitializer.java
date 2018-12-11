@@ -9,6 +9,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
+import java.util.List;
 
 public class BoardInitializer {
 
@@ -21,11 +22,12 @@ public class BoardInitializer {
 
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
 
-            int height = 0;
-            int width = 0;
-            int i = 0;
+            List<CSVRecord> records = csvParser.getRecords();
+            int height = records.size();
+            int width = records.get(0).size();
 
-            for (CSVRecord record : csvParser) {
+            int i = 0;
+            for (CSVRecord record : records) {
                 int j = 0;
 
                 for (String cell : record) {
@@ -40,15 +42,11 @@ public class BoardInitializer {
                             System.out.println(cell);
                             break;
                     }
-
                     j++;
                 }
-
-                width = record.size();
-                height++;
                 i++;
             }
-            System.out.println(height + " " + width);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
