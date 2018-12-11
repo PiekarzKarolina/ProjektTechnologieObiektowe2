@@ -37,6 +37,8 @@ public class NurikabeBoardController {
 
     private HashMap<CheckBox, Color> checkBoxes = new HashMap<>();
 
+    private ArrayList<BoardButton> buttons = new ArrayList<>();
+
     private static final int NUM_BUTTON_LINES = 10;
     private static final int BUTTONS_PER_LINE = 10;
     private double BUTTON_PADDING = 0;
@@ -59,12 +61,10 @@ public class NurikabeBoardController {
         checkBoxes.put(colorPink, Color.PINK);
         checkBoxes.put(colorWhite, Color.WHITE);
 
-        Board userBoard = game.getUserBoard();
-
         for (int r = 0; r < NUM_BUTTON_LINES; r++)
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
 
-                BoardButton button = new BoardButton(userBoard.getCells()[r][c].getIslandNumber(), r, c);
+                BoardButton button = new BoardButton("   ", r, c);
 
                 button.setOnAction(event -> {
                     BoardButton clickedButton = (BoardButton) event.getSource();
@@ -77,10 +77,15 @@ public class NurikabeBoardController {
                 });
 
                 buttonGrid.add(button, c, r);
+                buttons.add(button);
             }
-
-
     }
+
+    public void populateBoard(){
+        Board userBoard = game.getUserBoard();
+        buttons.forEach(button -> button.setAccessibleText(userBoard.getCells()[button.getPositionColumn()][button.getPositionColumn()].getIslandNumber()));
+    }
+
 
     @FXML
     public void handleColor(ActionEvent event) {

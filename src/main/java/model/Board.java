@@ -18,6 +18,14 @@ public class Board {
         return cells;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public void changeCellColor(int row, int column, Color color) {
        cells[row][column].setColor(color);
     }
