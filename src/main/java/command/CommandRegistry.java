@@ -17,7 +17,7 @@ public class CommandRegistry {
         if(!redoCommandStack.isEmpty()){
             Command command = redoCommandStack.remove(redoCommandStack.size()-1);
             command.redo();
-            redoCommandStack.add(command);
+            commandStack.add(command);
         }
     }
 

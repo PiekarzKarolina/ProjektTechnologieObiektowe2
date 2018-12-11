@@ -32,6 +32,7 @@ public class ChangeColorCommand implements Command {
     public void redo() {
         game.getUserBoard().changeCellColor(row, column, actualColor);
         button.setStyle("-fx-background-color:" + actualColor);
+
     }
 
     @Override
