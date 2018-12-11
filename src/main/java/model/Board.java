@@ -4,21 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private ArrayList<ArrayList<Cell>> cells;
+    private Cell[][] cells;
     private int width;
     private int height;
 
-    public Board(ArrayList<ArrayList<Cell>> cells, int width, int height) {
+    public Board(Cell[][] cells, int width, int height) {
         this.cells = cells;
         this.width = width;
         this.height = height;
     }
 
-    public void changeCellColor(int row, int column, Color color) {
-        if(cells.get(row).get(column) instanceof  CellSet) cells.get(row).get(column).setColor(color);
+    public Cell[][] getCells() {
+        return cells;
     }
 
-    private List<CellSet> validate() {
+    public void changeCellColor(int row, int column, Color color) {
+       cells[row][column].setColor(color);
+    }
+
+    private List<Cell> validate() {
         //TODO
         return null;
     }
