@@ -31,7 +31,7 @@ public class NurikabeController {
 
             NurikabeBoardController controller = loader.getController();
             controller.setGame(game);
-            //controller.populateBoard();
+            controller.populateBoard();
 
         } catch (IOException e) {
             // don't do this in common apps

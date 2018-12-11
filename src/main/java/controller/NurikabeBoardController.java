@@ -47,6 +47,7 @@ public class NurikabeBoardController {
     GridPane buttonGrid;
 
     public void setGame(Game game) {
+        System.out.println("Game set");
         this.game = game;
     }
 
@@ -83,7 +84,10 @@ public class NurikabeBoardController {
 
     public void populateBoard(){
         Board userBoard = game.getUserBoard();
-        buttons.forEach(button -> button.setAccessibleText(userBoard.getCells()[button.getPositionColumn()][button.getPositionColumn()].getIslandNumber()));
+
+        buttons.forEach(button -> {
+            button.setText(userBoard.getCells()[button.getPositionRow()][button.getPositionColumn()].getIslandNumber());
+        });
     }
 
 

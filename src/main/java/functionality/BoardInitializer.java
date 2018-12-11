@@ -12,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardInitializer {
-
-    Cell[][] finalCells;
     Cell[][] startingCells;
+    Cell[][] finalCells;
     int height, width;
 
     public DoubleBoard initializeBoard(String boardName) {
@@ -29,42 +28,39 @@ public class BoardInitializer {
             List<CSVRecord> records = csvParser.getRecords();
             height = records.size();
             width = records.get(0).size();
-            Cell[][] finalCells = new Cell[height][width];
-            Cell[][] startingCells = new Cell[height][width];
+            finalCells = new Cell[height][width];
+            startingCells = new Cell[height][width];
 
-            int i=0;
-            for (CSVRecord record : csvParser) {
+            int i = 0;
+            for (CSVRecord record : records) {
                 int j = 0;
                 for (String cell : record) {
                     switch (cell) {
                         case "B":
-                            Cell finalBlackCell = new Cell(Color.BLACK);
-                            finalCells[i][j] = finalBlackCell;
-                            Cell startingBlackCell = new Cell(Color.NONE);
-                            startingCells[i][j] = startingBlackCell;
+                            System.out.println("B" + i + j);
+                            finalCells[i][j] = new Cell(Color.BLACK);
+                            startingCells[i][j] = new Cell(Color.NONE);
                             break;
                         case "W":
-                            Cell finalWhiteCell = new Cell(Color.WHITE);
-                            finalCells[i][j] = finalWhiteCell;
-                            Cell startingWhiteCell = new Cell(Color.NONE);
-                            startingCells[i][j] = startingWhiteCell;
+                            System.out.println("W" + i + j);
+                            finalCells[i][j] = new Cell(Color.WHITE);
+                            startingCells[i][j] = new Cell(Color.NONE);
                             break;
                         default:
-                            Cell island = new Cell(Color.NONE, cell);
-                            finalCells[i][j] = island;
-                            startingCells[i][j] = island;
+                            System.out.println("def" + i + j);
+                            finalCells[i][j] = new Cell(Color.NONE, cell);
+                            startingCells[i][j] = new Cell(Color.NONE, cell);
                             break;
                     }
                     j++;
                 }
                 i++;
             }
-            System.out.println(height + " " + width);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return new DoubleBoard(new Board(startingCells, height, width), new Board(finalCells, height, width));
+        return new DoubleBoard(new Board(startingCells, width, height), new Board(finalCells, width, height));
     }
 
 }

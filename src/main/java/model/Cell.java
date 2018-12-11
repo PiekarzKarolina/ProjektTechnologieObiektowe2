@@ -8,7 +8,7 @@ public class Cell {
 
     public Cell(Color color) {
         this.color = color;
-        this.islandNumber = "   ";
+        this.islandNumber = "  ";
     }
 
     public Cell(Color color, String islandNumber) {
