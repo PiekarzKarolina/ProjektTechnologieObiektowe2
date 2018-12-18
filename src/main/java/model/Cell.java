@@ -2,7 +2,7 @@ package model;
 
 public class Cell {
     private Color color;
-    private String islandNumber;
+    private final String islandNumber;
 
     //TODO
 

@@ -1,6 +1,7 @@
 package game;
 
 import functionality.BoardInitializer;
+import functionality.BoardReader;
 import model.Board;
 import model.Cell;
 import model.DoubleBoard;
@@ -13,7 +14,7 @@ public class Game {
     private Score score;
 
     public Game(String boardName) {
-        this.board = new BoardInitializer().initializeBoard(boardName);
+        this.board = new BoardInitializer().initializeBoard(new BoardReader(boardName));
     }
 
 

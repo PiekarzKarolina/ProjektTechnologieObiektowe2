@@ -11,7 +11,7 @@ public class ChangeColorCommand implements Command {
     private Color previousColor;
     private Button button;
 
-    public ChangeColorCommand(int row, int column, Color actualColor, Color previousColor, Game game, Button button){
+    public ChangeColorCommand(int row, int column, Color actualColor, Color previousColor, Game game, Button button) {
         this.row = row;
         this.column = column;
         this.actualColor = actualColor;
@@ -22,21 +22,21 @@ public class ChangeColorCommand implements Command {
 
     @Override
     public void execute() {
-        game.getUserBoard().changeCellColor(row, column, actualColor);
+        game.getUserBoard().setCellColor(row, column, actualColor);
         if (actualColor != Color.NONE)
             button.setStyle("-fx-background-color:" + actualColor);
     }
 
     @Override
     public void redo() {
-        game.getUserBoard().changeCellColor(row, column, actualColor);
+        game.getUserBoard().setCellColor(row, column, actualColor);
         button.setStyle("-fx-background-color:" + actualColor);
 
     }
 
     @Override
     public void undo() {
-        game.getUserBoard().changeCellColor(row, column, previousColor);
+        game.getUserBoard().setCellColor(row, column, previousColor);
         button.setStyle("-fx-background-color:" + previousColor);
     }
 
