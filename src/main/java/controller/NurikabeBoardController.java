@@ -15,6 +15,8 @@ import model.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 
 public class NurikabeBoardController {
 
@@ -83,10 +85,9 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
                     previousColor = game.getUserBoard().getCellColor(row, column);
-                    ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game, button);
+                    ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game);
                     commandRegistry.executeCommand(changeColorCommand);
                 });
-
                 buttonGrid.add(button, c, r);
                 buttons.add(button);
             }
@@ -99,6 +100,7 @@ public class NurikabeBoardController {
             Cell cell = userBoard.getCell(button.getPositionRow(), button.getPositionColumn());
             button.setText(cell.getIslandNumber());
             button.setStyle("-fx-background-color:" + cell.getColor());
+            cell.addObserver(button);
         });
     }
 
@@ -114,7 +116,6 @@ public class NurikabeBoardController {
                 for (CheckBox checkBoxToDisable : checkBoxes.keySet()) {
                     if (checkBox != checkBoxToDisable) checkBoxToDisable.setSelected(false);
                 }
-
                 return;
             }
         }
@@ -133,6 +134,5 @@ public class NurikabeBoardController {
     public void setCommandRegistry(CommandRegistry commandRegistry) {
         this.commandRegistry = commandRegistry;
     }
-
 
 }

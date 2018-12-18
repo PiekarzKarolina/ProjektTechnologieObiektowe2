@@ -1,6 +1,8 @@
 package model;
 
-public class Cell {
+import java.util.Observable;
+
+public class Cell extends Observable {
     private Color color;
     private final String islandNumber;
 
@@ -22,6 +24,8 @@ public class Cell {
 
     public void setColor(Color color) {
         this.color = color;
+        setChanged();
+        notifyObservers(color);
     }
 
     public String getIslandNumber() {
@@ -37,4 +41,5 @@ public class Cell {
         return (this.color == comparedCell.color && this.islandNumber.equals(comparedCell.islandNumber));
 
     }
+
 }

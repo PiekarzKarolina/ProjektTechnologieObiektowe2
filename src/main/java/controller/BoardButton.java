@@ -2,7 +2,10 @@ package controller;
 
 import javafx.scene.control.Button;
 
-public class BoardButton extends Button {
+import java.util.Observable;
+import java.util.Observer;
+
+public class BoardButton extends Button implements Observer {
     private int positionRow;
     private int positionColumn;
 
@@ -20,4 +23,8 @@ public class BoardButton extends Button {
         return positionColumn;
     }
 
+    @Override
+    public void update(Observable o, Object arg) {  //o is Cell, arg is Color
+        this.setStyle("-fx-background-color:" + arg);
+    }
 }
