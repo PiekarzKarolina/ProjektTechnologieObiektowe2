@@ -25,6 +25,7 @@ public class BoardButton extends Button implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {  //o is Cell, arg is Color
-        this.setStyle("-fx-background-color:" + arg);
+        if (arg.toString() != null)
+            this.setStyle("-fx-background-color:" + arg);
     }
 }
