@@ -92,11 +92,11 @@ public class NurikabeBoardController {
             }
     }
 
-    public void populateBoard(){
+    public void populateBoard() {
         Board userBoard = game.getUserBoard();
 
         buttons.forEach(button -> {
-            Cell cell = userBoard.getCells()[button.getPositionRow()][button.getPositionColumn()];
+            Cell cell = userBoard.getCell(button.getPositionRow(), button.getPositionColumn());
             button.setText(cell.getIslandNumber());
             button.setStyle("-fx-background-color:" + cell.getColor());
         });

@@ -1,10 +1,9 @@
 package command;
 
 public interface Command {
+    void execute();
 
-    public void execute();
+    void redo();
 
-    public void redo();
-
-    public void undo();
+    void undo();
 }
