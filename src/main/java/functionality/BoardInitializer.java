@@ -22,11 +22,11 @@ public class BoardInitializer {
                 switch (cell) {
                     case "B":
                         finalCells[i][j] = new Cell(Color.BLACK);
-                        startingCells[i][j] = new Cell(Color.WHITE);
+                        startingCells[i][j] = new Cell(Color.SILVER);
                         break;
                     case "W":
                         finalCells[i][j] = new Cell(Color.WHITE);
-                        startingCells[i][j] = new Cell(Color.WHITE);
+                        startingCells[i][j] = new Cell(Color.SILVER);
                         break;
                     default:
                         finalCells[i][j] = new Cell(cell);
