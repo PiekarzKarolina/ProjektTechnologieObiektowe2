@@ -15,8 +15,6 @@ import model.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
 
 public class NurikabeBoardController {
 
@@ -85,8 +83,10 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
                     previousColor = game.getUserBoard().getCellColor(row, column);
-                    ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game);
-                    commandRegistry.executeCommand(changeColorCommand);
+                    if (actualColor != Color.NONE && actualColor != previousColor) { // ZROBIĆ TO ŁADNIEJ XD
+                        ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game);
+                        commandRegistry.executeCommand(changeColorCommand);
+                    }
                 });
                 buttonGrid.add(button, c, r);
                 buttons.add(button);
