@@ -2,6 +2,7 @@ package controller;
 
 import command.ChangeColorCommand;
 import command.CommandRegistry;
+import functionality.BoardValidator;
 import game.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import model.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NurikabeBoardController {
 
@@ -37,10 +39,7 @@ public class NurikabeBoardController {
     private CheckBox colorPink;
 
     @FXML
-    private Button undoButton;
-
-    @FXML
-    private Button redoButton;
+    private Button checkButton;
 
     private Color actualColor = Color.NONE;
 
@@ -73,7 +72,7 @@ public class NurikabeBoardController {
         checkBoxes.put(colorPink, Color.PINK);
         checkBoxes.put(colorWhite, Color.WHITE);
 
-        for (int r = 0; r < NUM_BUTTON_LINES; r++)
+        for (int r = 0; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
 
                 BoardButton button = new BoardButton("   ", r, c);
@@ -91,6 +90,11 @@ public class NurikabeBoardController {
                 buttonGrid.add(button, c, r);
                 buttons.add(button);
             }
+        }
+
+        checkButton.setOnMousePressed((event) -> highlightIllegal());
+        checkButton.setOnMouseReleased((event) -> unhighlightIllegal());
+
     }
 
     public void populateBoard() {
@@ -135,4 +139,37 @@ public class NurikabeBoardController {
         this.commandRegistry = commandRegistry;
     }
 
+
+    private void highlightIllegal() {
+        BoardValidator validator = new BoardValidator(game.getExpectedBoard(), game.getUserBoard());
+        if (validator.isSolved()) {
+            game.markAsSolved();
+            return;
+        }
+
+        Cell[][] diff = validator.getDiff();
+//        System.out.println(buttons);
+        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
+            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
+                if (diff[x][y] != null) {
+                    Button button = buttons.get(x + y * NUM_BUTTON_LINES);
+                    button.setStyle("-fx-background-color: red");
+                }
+//                System.out.print("(" + x + ", " + y + ") " + diff[x][y] + " ");
+            }
+//            System.out.println();
+        }
+    }
+
+    private void unhighlightIllegal() {
+        if (game.isSolved()) return;
+
+        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
+            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
+                Button button = buttons.get(x + y * NUM_BUTTON_LINES);
+                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(x, y).getColor());
+            }
+        }
+    }
 }
+
