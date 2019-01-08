@@ -4,24 +4,33 @@ import command.ChangeColorCommand;
 import command.CommandRegistry;
 import functionality.BoardValidator;
 import game.Game;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import model.Board;
 import model.Cell;
 import model.Color;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class NurikabeBoardController {
 
     private Game game;
     private CommandRegistry commandRegistry;
+
+    @FXML
+    private Label timer;
 
     @FXML
     private CheckBox colorWhite;
@@ -53,6 +62,10 @@ public class NurikabeBoardController {
     private static final int BUTTONS_PER_LINE = 10;
     private double BUTTON_PADDING = 0;
 
+    Timeline timeline;
+    long startTime;
+    DateFormat timeFormat = new SimpleDateFormat( "mm:ss" );
+
     @FXML
     GridPane buttonGrid;
 
@@ -62,6 +75,21 @@ public class NurikabeBoardController {
     }
 
     public void initialize() {
+
+        startTime = System.currentTimeMillis();
+        timeline = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(1),
+                        event -> {
+                            final long diff = System.currentTimeMillis() - startTime;
+                            timer.setText( timeFormat.format( diff ) );
+                        }
+                )
+        );
+        timeline.setCycleCount( Animation.INDEFINITE );
+        timeline.playFromStart();
+
+
         buttonGrid.setPadding(new Insets(BUTTON_PADDING));
         buttonGrid.setHgap(BUTTON_PADDING);
         buttonGrid.setVgap(BUTTON_PADDING);
@@ -117,7 +145,9 @@ public class NurikabeBoardController {
 
     private void unhighlightIllegal() {
         if (game.isSolved()) {
-            System.out.println("WON");
+            long result = System.currentTimeMillis() - startTime;
+            timeline.stop();
+            System.out.println("Your result " + timeFormat.format( result ));
             return;
         }
 
