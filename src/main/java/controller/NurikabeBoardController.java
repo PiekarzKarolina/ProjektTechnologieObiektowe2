@@ -82,7 +82,7 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
                     previousColor = game.getUserBoard().getCellColor(row, column);
-                    if (actualColor != Color.NONE && actualColor != previousColor) { // ZROBIĆ TO ŁADNIEJ XD
+                    if (actualColor != Color.NONE && actualColor != previousColor) {
                         ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game);
                         commandRegistry.executeCommand(changeColorCommand);
                     }
@@ -95,6 +95,35 @@ public class NurikabeBoardController {
         checkButton.setOnMousePressed((event) -> highlightIllegal());
         checkButton.setOnMouseReleased((event) -> unhighlightIllegal());
 
+    }
+
+    private void highlightIllegal() {
+        BoardValidator validator = new BoardValidator(game.getExpectedBoard(), game.getUserBoard());
+        if (validator.isSolved()) {
+            game.markAsSolved();
+            return;
+        }
+
+        Cell[][] diff = validator.getDiff();
+        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
+            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
+                if (diff[y][x] != null) {
+                    Button button = buttons.get(x + y * NUM_BUTTON_LINES);
+                    button.setStyle("-fx-background-color: red");
+                }
+            }
+        }
+    }
+
+    private void unhighlightIllegal() {
+        if (game.isSolved()) return;
+
+        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
+            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
+                Button button = buttons.get(x + y * NUM_BUTTON_LINES);
+                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(y, x).getColor());
+            }
+        }
     }
 
     public void populateBoard() {
@@ -139,34 +168,5 @@ public class NurikabeBoardController {
         this.commandRegistry = commandRegistry;
     }
 
-
-    private void highlightIllegal() {
-        BoardValidator validator = new BoardValidator(game.getExpectedBoard(), game.getUserBoard());
-        if (validator.isSolved()) {
-            game.markAsSolved();
-            return;
-        }
-
-        Cell[][] diff = validator.getDiff();
-        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
-            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
-                if (diff[y][x] != null) {
-                    Button button = buttons.get(x + y * NUM_BUTTON_LINES);
-                    button.setStyle("-fx-background-color: red");
-                }
-            }
-        }
-    }
-
-    private void unhighlightIllegal() {
-        if (game.isSolved()) return;
-
-        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
-            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
-                Button button = buttons.get(x + y * NUM_BUTTON_LINES);
-                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(y, x).getColor());
-            }
-        }
-    }
 }
 
