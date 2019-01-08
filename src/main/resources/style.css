@@ -1,0 +1,30 @@
+.check-box .box{
+    -fx-border-radius: 3px;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #395306;
+}
+
+#colorAqua .box{
+    -fx-background-image: url("palma.png");
+}
+
+#colorGreenyellow .box{
+    -fx-background-image: url("palma.png");
+}
+
+#colorPink .box{
+    -fx-background-image: url("palma.png");
+}
+
+.button {
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #395306;
+}
+
+.tabPane{
+    -fx-background-color: #ffffff;
+}

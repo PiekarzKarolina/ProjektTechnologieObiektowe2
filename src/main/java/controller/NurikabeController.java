@@ -24,8 +24,9 @@ public class NurikabeController {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Nurikabe.class.getResource(xmlFile));
-            TabPane rootLayout = (TabPane) loader.load();
+            TabPane rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add("style.css");
             primaryStage.setScene(scene);
             primaryStage.show();
 
