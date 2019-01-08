@@ -2,6 +2,7 @@ package controller;
 
 import command.ChangeColorCommand;
 import command.CommandRegistry;
+import functionality.BoardValidator;
 import game.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import model.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NurikabeBoardController {
 
@@ -37,10 +39,7 @@ public class NurikabeBoardController {
     private CheckBox colorPink;
 
     @FXML
-    private Button undoButton;
-
-    @FXML
-    private Button redoButton;
+    private Button checkButton;
 
     private Color actualColor = Color.NONE;
 
@@ -73,7 +72,7 @@ public class NurikabeBoardController {
         checkBoxes.put(colorPink, Color.PINK);
         checkBoxes.put(colorWhite, Color.WHITE);
 
-        for (int r = 0; r < NUM_BUTTON_LINES; r++)
+        for (int r = 0; r < NUM_BUTTON_LINES; r++) {
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
 
                 BoardButton button = new BoardButton("   ", r, c);
@@ -83,7 +82,7 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
                     previousColor = game.getUserBoard().getCellColor(row, column);
-                    if (actualColor != Color.NONE && actualColor != previousColor) { // ZROBIĆ TO ŁADNIEJ XD
+                    if (actualColor != Color.NONE && actualColor != previousColor) {
                         ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game);
                         commandRegistry.executeCommand(changeColorCommand);
                     }
@@ -91,6 +90,43 @@ public class NurikabeBoardController {
                 buttonGrid.add(button, c, r);
                 buttons.add(button);
             }
+        }
+
+        checkButton.setOnMousePressed((event) -> highlightIllegal());
+        checkButton.setOnMouseReleased((event) -> unhighlightIllegal());
+
+    }
+
+    private void highlightIllegal() {
+        BoardValidator validator = new BoardValidator(game.getExpectedBoard(), game.getUserBoard());
+        if (validator.isSolved()) {
+            game.markAsSolved();
+            return;
+        }
+
+        Cell[][] diff = validator.getDiff();
+        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
+            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
+                if (diff[y][x] != null) {
+                    Button button = buttons.get(x + y * NUM_BUTTON_LINES);
+                    button.setStyle("-fx-background-color: red");
+                }
+            }
+        }
+    }
+
+    private void unhighlightIllegal() {
+        if (game.isSolved()) {
+            System.out.println("WON");
+            return;
+        }
+
+        for (int y = 0; y < NUM_BUTTON_LINES; y++) {
+            for (int x = 0; x < BUTTONS_PER_LINE; x++) {
+                Button button = buttons.get(x + y * NUM_BUTTON_LINES);
+                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(y, x).getColor());
+            }
+        }
     }
 
     public void populateBoard() {
@@ -136,3 +172,4 @@ public class NurikabeBoardController {
     }
 
 }
+

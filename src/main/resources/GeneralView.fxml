@@ -18,7 +18,7 @@
                         <GridPane fx:id="buttonGrid" alignment="center" hgap="10" prefHeight="571.0" prefWidth="533.0"
                                   vgap="10">
                         </GridPane>
-                        <Button layoutX="587.0" layoutY="509.0" mnemonicParsing="false"
+                        <Button fx:id="checkButton" layoutX="587.0" layoutY="509.0" mnemonicParsing="false"
                                 style="-fx-background-color: white;" text="Sprawdź rozwiązanie"/>
                         <Pane layoutX="500.0" layoutY="116.0" prefHeight="311.0" prefWidth="300.0">
                             <children>
@@ -35,15 +35,15 @@
                                     </font>
                                 </Text>
                                 <CheckBox fx:id="colorWhite" layoutX="54.0" layoutY="67.0" mnemonicParsing="false"
-                                          onAction="#handleColor"  scaleX="1.5" scaleY="1.5" text="Wyspa">
+                                          onAction="#handleColor" scaleX="1.5" scaleY="1.5" text="Wyspa">
                                     <effect>
-                                        <ColorAdjust brightness="0.4" contrast="1.0" />
+                                        <ColorAdjust brightness="0.4" contrast="1.0"/>
                                     </effect>
                                 </CheckBox>
                                 <CheckBox fx:id="colorBlack" layoutX="196.0" layoutY="67.0" mnemonicParsing="false"
-                                          onAction="#handleColor"  scaleX="1.5" scaleY="1.5" text="Fosa">
+                                          onAction="#handleColor" scaleX="1.5" scaleY="1.5" text="Fosa">
                                     <effect>
-                                        <ColorAdjust brightness="-0.65" />
+                                        <ColorAdjust brightness="-0.65"/>
                                     </effect>
                                 </CheckBox>
                                 <CheckBox fx:id="colorBlue" layoutX="52.0" layoutY="172.0" mnemonicParsing="false"
@@ -67,9 +67,11 @@
                             </children>
                         </Pane>
                         <Button layoutX="544.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0"
-                                prefWidth="67.0" style="-fx-background-color: red;" text="Cofnij" onAction="#handleUndo"/>
+                                prefWidth="67.0" style="-fx-background-color: red;" text="Cofnij"
+                                onAction="#handleUndo"/>
                         <Button layoutX="687.0" layoutY="446.0" mnemonicParsing="false" prefHeight="39.0"
-                                prefWidth="73.0" style="-fx-background-color: green;" text="Ponów" onAction="#handleRedo"/>
+                                prefWidth="73.0" style="-fx-background-color: green;" text="Ponów"
+                                onAction="#handleRedo"/>
                         <Text fill="WHITE" layoutX="599.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Twój czas:">
                             <font>

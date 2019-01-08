@@ -2,18 +2,18 @@ package model;
 
 public class DoubleBoard {
     private final Board userBoard;
-    private final Board finalBoard;
+    private final Board expectedBoard;
 
-    public DoubleBoard(Board userBoard, Board finalBoard) {
+    public DoubleBoard(Board userBoard, Board expectedBoard) {
         this.userBoard = userBoard;
-        this.finalBoard = finalBoard;
+        this.expectedBoard = expectedBoard;
     }
 
     public Board getUserBoard() {
         return userBoard;
     }
 
-    public Board getFinalBoard() {
-        return finalBoard;
+    public Board getExpectedBoard() {
+        return expectedBoard;
     }
 }
