@@ -39,7 +39,5 @@ public class Cell extends Observable {
         Cell comparedCell = (Cell) obj;
 
         return (this.color == comparedCell.color && this.islandNumber.equals(comparedCell.islandNumber));
-
     }
-
 }
