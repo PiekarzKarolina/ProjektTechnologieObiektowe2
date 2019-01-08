@@ -148,16 +148,13 @@ public class NurikabeBoardController {
         }
 
         Cell[][] diff = validator.getDiff();
-//        System.out.println(buttons);
         for (int y = 0; y < NUM_BUTTON_LINES; y++) {
             for (int x = 0; x < BUTTONS_PER_LINE; x++) {
-                if (diff[x][y] != null) {
+                if (diff[y][x] != null) {
                     Button button = buttons.get(x + y * NUM_BUTTON_LINES);
                     button.setStyle("-fx-background-color: red");
                 }
-//                System.out.print("(" + x + ", " + y + ") " + diff[x][y] + " ");
             }
-//            System.out.println();
         }
     }
 
@@ -167,7 +164,7 @@ public class NurikabeBoardController {
         for (int y = 0; y < NUM_BUTTON_LINES; y++) {
             for (int x = 0; x < BUTTONS_PER_LINE; x++) {
                 Button button = buttons.get(x + y * NUM_BUTTON_LINES);
-                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(x, y).getColor());
+                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(y, x).getColor());
             }
         }
     }
