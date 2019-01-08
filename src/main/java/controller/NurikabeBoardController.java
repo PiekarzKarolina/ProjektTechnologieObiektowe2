@@ -116,7 +116,10 @@ public class NurikabeBoardController {
     }
 
     private void unhighlightIllegal() {
-        if (game.isSolved()) return;
+        if (game.isSolved()) {
+            System.out.println("WON");
+            return;
+        }
 
         for (int y = 0; y < NUM_BUTTON_LINES; y++) {
             for (int x = 0; x < BUTTONS_PER_LINE; x++) {
