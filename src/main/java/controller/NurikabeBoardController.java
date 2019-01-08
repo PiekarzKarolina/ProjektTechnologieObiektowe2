@@ -34,7 +34,16 @@ public class NurikabeBoardController {
     private CheckBox colorGreen;
 
     @FXML
+    private CheckBox colorRed;
+
+    @FXML
+    private CheckBox colorAqua;
+
+    @FXML
     private CheckBox colorPink;
+
+    @FXML
+    private CheckBox colorGreenyellow;
 
     @FXML
     private Button undoButton;
@@ -70,8 +79,11 @@ public class NurikabeBoardController {
         checkBoxes.put(colorBlack, Color.BLACK);
         checkBoxes.put(colorBlue, Color.BLUE);
         checkBoxes.put(colorGreen, Color.GREEN);
-        checkBoxes.put(colorPink, Color.PINK);
+        checkBoxes.put(colorRed, Color.RED);
         checkBoxes.put(colorWhite, Color.WHITE);
+        checkBoxes.put(colorAqua, Color.AQUA);
+        checkBoxes.put(colorPink, Color.PINK);
+        checkBoxes.put(colorGreenyellow, Color.GREENYELLOW);
 
         for (int r = 0; r < NUM_BUTTON_LINES; r++)
             for (int c = 0; c < BUTTONS_PER_LINE; c++) {
