@@ -9,6 +9,7 @@
 *.ear
 .gradle/
 gradle/
+scores.txt
 
 # Ignore Gradle GUI config
 gradle-app.setting
