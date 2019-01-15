@@ -4,10 +4,8 @@ import command.ChangeColorCommand;
 import command.CommandRegistry;
 import functionality.BoardValidator;
 import functionality.ScoreHandler;
+import functionality.Timer;
 import game.Game;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -19,16 +17,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import model.Board;
 import model.Cell;
 import model.Color;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -38,7 +32,7 @@ public class NurikabeBoardController {
     private CommandRegistry commandRegistry;
 
     @FXML
-    private Label timer;
+    private Label time;
 
     @FXML
     private CheckBox colorWhite;
@@ -82,9 +76,7 @@ public class NurikabeBoardController {
     private static final int BUTTONS_PER_LINE = 10;
     private double BUTTON_PADDING = 0;
 
-    private Timeline timeline;
-    private long startTime;
-    private DateFormat timeFormat = new SimpleDateFormat( "mm:ss" );
+    private Timer timer;
 
     @FXML
     GridPane buttonGrid;
@@ -96,19 +88,7 @@ public class NurikabeBoardController {
 
     public void initialize() {
 
-        startTime = System.currentTimeMillis();
-        timeline = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(1),
-                        event -> {
-                            final long diff = System.currentTimeMillis() - startTime;
-                            timer.setText( timeFormat.format( diff ) );
-                        }
-                )
-        );
-        timeline.setCycleCount( Animation.INDEFINITE );
-        timeline.playFromStart();
-
+        timer = new Timer(this.time);
 
         buttonGrid.setPadding(new Insets(BUTTON_PADDING));
         buttonGrid.setHgap(BUTTON_PADDING);
@@ -168,8 +148,7 @@ public class NurikabeBoardController {
 
     private void unhighlightIllegal() {
         if (game.isSolved()) {
-            long result = System.currentTimeMillis() - startTime;
-            timeline.stop();
+            long result = timer.stop();
             try {
                 Stage endgamePopupStage = new Stage();
                 endgamePopupStage.setTitle("Congratulations!");
