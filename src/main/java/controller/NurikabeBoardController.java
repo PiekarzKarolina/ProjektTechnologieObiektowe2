@@ -19,7 +19,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Board;
@@ -215,6 +214,16 @@ public class NurikabeBoardController {
             button.setStyle("-fx-background-color:" + cell.getColor());
             cell.addObserver(button);
         });
+    }
+
+    public void setDefaultColor(Color defaultColor){
+        actualColor = defaultColor;
+        for (CheckBox checkBox : checkBoxes.keySet()) {
+            if (defaultColor == checkBoxes.get(checkBox)) {
+                checkBox.setSelected(true);
+                break;
+            }
+        }
     }
 
 

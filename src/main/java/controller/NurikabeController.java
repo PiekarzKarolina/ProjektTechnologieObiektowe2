@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import model.Color;
 
 import java.io.IOException;
 
@@ -34,6 +35,7 @@ public class NurikabeController {
             controller.setGame(game);
             controller.populateBoard();
             controller.setCommandRegistry(commandRegistry);
+            controller.setDefaultColor(Color.WHITE);
 
 
         } catch (IOException e) {
