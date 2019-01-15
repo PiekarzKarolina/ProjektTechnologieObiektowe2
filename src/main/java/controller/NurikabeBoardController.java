@@ -133,7 +133,7 @@ public class NurikabeBoardController {
                     int row = clickedButton.getPositionRow();
                     int column = clickedButton.getPositionColumn();
                     previousColor = game.getUserBoard().getCellColor(row, column);
-                    if (actualColor != Color.NONE && actualColor != previousColor) {
+                    if (actualColor != Color.NONE && actualColor != previousColor && clickedButton.getText().equalsIgnoreCase("  ")) {
                         ChangeColorCommand changeColorCommand = new ChangeColorCommand(row, column, actualColor, previousColor, game);
                         commandRegistry.executeCommand(changeColorCommand);
                     }
