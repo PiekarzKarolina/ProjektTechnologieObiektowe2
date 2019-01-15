@@ -194,7 +194,14 @@ public class NurikabeBoardController {
         for (int y = 0; y < NUM_BUTTON_LINES; y++) {
             for (int x = 0; x < BUTTONS_PER_LINE; x++) {
                 Button button = buttons.get(x + y * NUM_BUTTON_LINES);
-                button.setStyle("-fx-background-color:" + game.getUserBoard().getCell(y, x).getColor());
+
+                Color color = game.getUserBoard().getCell(y, x).getColor();
+                if(color.equals(Color.PINK) || color.equals(Color.AQUA) || color.equals(Color.GREENYELLOW)){
+                    button.setStyle("-fx-background-color:" + color + ";" + "-fx-background-image:" + "url(palma.png)");
+                }
+                else{
+                    button.setStyle("-fx-background-color:" + color);
+                }
             }
         }
     }

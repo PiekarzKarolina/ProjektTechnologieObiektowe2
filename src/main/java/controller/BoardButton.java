@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.scene.control.Button;
+import model.Color;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -26,7 +27,7 @@ public class BoardButton extends Button implements Observer {
     @Override
     public void update(Observable o, Object arg) {  //o is Cell, arg is Color
         if (arg.toString() != null) {
-            if(arg.toString().equalsIgnoreCase("pink") || arg.toString().equalsIgnoreCase("aqua") || arg.toString().equalsIgnoreCase("greenyellow")){
+            if(arg.equals(Color.PINK) || arg.equals(Color.AQUA) || arg.equals(Color.GREENYELLOW)){
                 this.setStyle("-fx-background-color:" + arg + ";" + "-fx-background-image:" + "url(palma.png)");
             }
             else{
