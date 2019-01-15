@@ -160,7 +160,7 @@ public class NurikabeBoardController {
             for (int x = 0; x < BUTTONS_PER_LINE; x++) {
                 if (diff[y][x] != null) {
                     Button button = buttons.get(x + y * NUM_BUTTON_LINES);
-                    button.setStyle("-fx-background-color: red");
+                    if(game.getUserBoard().getCell(y, x).getColor()!=Color.SILVER)button.setStyle("-fx-background-color: red");
                 }
             }
         }
