@@ -88,8 +88,6 @@ public class NurikabeBoardController {
 
     public void initialize() {
 
-        timer = new Timer(this.time);
-
         buttonGrid.setPadding(new Insets(BUTTON_PADDING));
         buttonGrid.setHgap(BUTTON_PADDING);
         buttonGrid.setVgap(BUTTON_PADDING);
@@ -126,6 +124,7 @@ public class NurikabeBoardController {
         checkButton.setOnMousePressed((event) -> highlightIllegal());
         checkButton.setOnMouseReleased((event) -> unhighlightIllegal());
 
+        timer = new Timer(this.time);
     }
 
     private void highlightIllegal() {

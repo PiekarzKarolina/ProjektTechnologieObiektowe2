@@ -16,14 +16,14 @@ public class Timer {
     private DateFormat timeFormat = new SimpleDateFormat( "mm:ss" );
 
 
-    public Timer(Label timer){
+    public Timer(Label time){
         startTime = System.currentTimeMillis();
         timeline = new Timeline(
                 new KeyFrame(
                         Duration.seconds(1),
                         event -> {
                             final long diff = System.currentTimeMillis() - startTime;
-                            timer.setText( timeFormat.format( diff ) );
+                            time.setText( timeFormat.format( diff ) );
                         }
                 )
         );

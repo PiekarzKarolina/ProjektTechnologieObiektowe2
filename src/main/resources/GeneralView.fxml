@@ -82,7 +82,7 @@
                                 <Font size="23.0"/>
                             </font>
                         </Text>
-                        <Label fx:id="timer" alignment="CENTER" layoutX="570.0" layoutY="49.0" prefHeight="67.0"
+                        <Label fx:id="time" alignment="CENTER" layoutX="570.0" layoutY="49.0" prefHeight="67.0"
                                prefWidth="161.0"
                                textAlignment="CENTER" textFill="WHITE">
                             <font>
